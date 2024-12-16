@@ -1,0 +1,34 @@
+Git Comments :- 
+
+Clone : git clone https://github.com/regithkumarc/SpringBoot-Topics.git 
+Add Origin : git remote add origin https://github.com/regithkumarc/SpringBoot-Topics.git 
+Checkout : git checkout NewBranch 
+All Files : git add . 
+Specific Files : git add classA classB class C 
+Fetch All : git pull 
+Verify Commits : git log 
+Add : git commit -m "Implemented successfully" 
+Update : git commit --amend -m "Updated Successfully" 
+Code Changes : git status 
+Push All : git push origin master 
+--------------------------------------------------------------------------------------- 
+Down merge from master to branch : 
+git checkout master 
+git pull 
+git checkout test 
+git merge master 
+git push 
+--------------------------------------------------------------------------------------- 
+Auto Merging : git revert commitId(qqqqqqq) 
+Change Commit message before Push : shift -> : wq -> Enter -> change commit message 
+Create New Branch : git checkout -b "NewBranch"  
+List All Branch : git branch --list 
+Delete New Branch : git branch -d NewBranch 
+Git Push All : git push --all  
+Restore HTML : git restore index.html 
+--------------------------------------------------------------------------------------- 
+git checkout NewBranch 
+git log --online  -> It will show all commit id with message for the NewBranch 
+git checkout Master 
+git log --online  -> It will show all commit id with message for the Master 
+--------------------------------------------------------------------------------------- 
