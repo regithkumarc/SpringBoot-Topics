@@ -22,7 +22,7 @@ public class EventController {
     @GetMapping("/publishMessage/{message}")
     public ResponseEntity<?> publishMessage(@PathVariable String message) {
         try {
-            //kafkaMessagePublisher.sendMessage(message);
+            kafkaMessagePublisher.sendMessage(message);
             return ResponseEntity.ok("Message Published Successfully");
         } catch (Exception e) {
            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -30,12 +30,7 @@ public class EventController {
     }
 
     @PostMapping("/publishCustomerToTopic")
-    public ResponseEntity<?> publishCustomerToTopic(@RequestBody Customer customer) {
-        try {
-            kafkaMessagePublisher.sendCustomerToTopic(customer);
-            return ResponseEntity.ok("Customer Published Successfully");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    public void publishCustomerToTopic(@RequestBody Customer customer) {
+        kafkaMessagePublisher.sendCustomerToTopic(customer);
     }
 }

@@ -13,9 +13,9 @@ import java.util.concurrent.CompletableFuture;
 public class KafkaMessagePublisher {
 
     @Autowired
-    public KafkaTemplate<String,Customer> kafkaTemplate;
+    public KafkaTemplate<String,Object> kafkaTemplate;
 
-/*    public void sendMessage(String message) {
+    public void sendMessage(String message) {
        CompletableFuture<SendResult<String,Object>> future = kafkaTemplate.send(Utils.MY_TOPIC1,message);
 
         future.whenComplete(((stringObjectSendResult, throwable) -> {
@@ -26,20 +26,22 @@ public class KafkaMessagePublisher {
                 System.out.println("Unable to send Message = [" + message + "] due to : " + throwable.getMessage());
             }
         }));
-    }*/
+    }
 
     public void sendCustomerToTopic(Customer customer) {
-        CompletableFuture<SendResult<String,Customer>> future = kafkaTemplate.send(Utils.MY_TOPIC1,customer);
-
-        System.out.println("published");
-        future.whenComplete(((stringObjectSendResult, throwable) -> {
-            if(throwable == null) {
-                System.out.println("Send customer to topic = [" + customer + "] with offset= ["
-                        + stringObjectSendResult.getRecordMetadata().offset() + "]");
-            } else {
-                System.out.println("Unable to send customer to topic = [" + customer + "] due to : " + throwable.getMessage());
-            }
-        }));
+       try {
+           CompletableFuture<SendResult<String,Object>> future = kafkaTemplate.send(Utils.MY_TOPIC1,customer);
+           future.whenComplete(((stringObjectSendResult, throwable) -> {
+               if (throwable == null) {
+                   System.out.println("Send customer to topic = [" + customer + "] with offset= ["
+                           + stringObjectSendResult.getRecordMetadata().offset() + "]");
+               } else {
+                   System.out.println("Unable to send customer to topic = [" + customer + "] due to : " + throwable.getMessage());
+               }
+           }));
+       } catch (Exception e) {
+           System.out.println("ERROR : " + e.getMessage());
+       }
     }
 
 }

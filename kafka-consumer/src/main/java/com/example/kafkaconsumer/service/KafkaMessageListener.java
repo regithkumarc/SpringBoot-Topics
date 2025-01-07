@@ -12,13 +12,20 @@ public class KafkaMessageListener {
 
     Logger logger = LoggerFactory.getLogger(KafkaMessageListener.class);
 
-    @KafkaListener(topics = Utils.MY_TOPIC1,groupId = Utils.GROUP_ID)
+    @KafkaListener(topics = Utils.MY_TOPIC2,groupId = Utils.GROUP_ID)
     public void consumeMessage(String message) {
+        System.out.println("calling consumeMessage");
         logger.info("Consumer consume the message {} ", message);
     }
 
-    @KafkaListener(topics = Utils.MY_TOPIC1,groupId = Utils.GROUP_ID,containerFactory = "customerListener")
+    @KafkaListener(topics = Utils.MY_TOPIC1,groupId = Utils.GROUP_ID,containerFactory = "kafkaListenerContainerFactory")
     public void consumeCustomer(Customer customer) {
-        logger.info("Consumer consume the Customer {} ", customer);
+        try {
+            System.out.println("calling consumeCustomer");
+            logger.info("Consumer consume the Customer {} ", customer);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
