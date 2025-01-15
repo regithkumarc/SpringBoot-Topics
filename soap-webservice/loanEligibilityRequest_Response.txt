@@ -1,0 +1,67 @@
+
+LoanEligibility :
+
+Success :
+
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:loan="http://www.example.com/soapwebservice/loanEligibility">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <loan:CustomerRequest>
+         <loan:customerName>regith</loan:customerName>
+         <loan:age>31</loan:age>
+         <loan:yearlyIncome>300000</loan:yearlyIncome>
+         <loan:cibilScore>700</loan:cibilScore>
+         <loan:employmentMode>private</loan:employmentMode>
+      </loan:CustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response :
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns2:Acknowledgement xmlns:ns2="http://www.example.com/soapwebservice/loanEligibility">
+         <ns2:isEligible>true</ns2:isEligible>
+         <ns2:approvedAmount>500000</ns2:approvedAmount>
+      </ns2:Acknowledgement>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Failure :
+
+Request :
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:loan="http://www.example.com/soapwebservice/loanEligibility">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <loan:CustomerRequest>
+         <loan:customerName>regith</loan:customerName>
+         <loan:age>30</loan:age>
+         <loan:yearlyIncome>100000</loan:yearlyIncome>
+         <loan:cibilScore>500</loan:cibilScore>
+         <loan:employmentMode>private</loan:employmentMode>
+      </loan:CustomerRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response :
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns2:Acknowledgement xmlns:ns2="http://www.example.com/soapwebservice/loanEligibility">
+         <ns2:isEligible>false</ns2:isEligible>
+         <ns2:approvedAmount>0</ns2:approvedAmount>
+         <ns2:criteriaMismatch>Person age should be in between 30 to 60</ns2:criteriaMismatch>
+         <ns2:criteriaMismatch>Minimum income should be more than 200000</ns2:criteriaMismatch>
+         <ns2:criteriaMismatch>Low cibil score please try after 6 month</ns2:criteriaMismatch>
+      </ns2:Acknowledgement>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

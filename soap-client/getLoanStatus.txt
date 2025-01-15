@@ -1,0 +1,51 @@
+getLoanStatus :
+
+Success :
+
+Request :
+
+http://localhost:8085/getLoanStatus - POST
+
+{
+    "customerName": "regith",
+    "age": 31,
+    "yearlyIncome": 300000,
+    "cibilScore": 700,
+    "employmentMode": "private"
+}
+
+Response :
+
+{
+    "isEligible": true,
+    "approvedAmount": 500000,
+    "criteriaMismatch": []
+}
+
+-------------------------------------------------------------------------------
+
+Failure :
+
+Request :
+
+http://localhost:8085/getLoanStatus
+
+{
+    "customerName": "regith",
+    "age": 30,
+    "yearlyIncome": 100000,
+    "cibilScore": 500,
+    "employmentMode": "private"
+}
+
+Response :
+
+{
+    "isEligible": false,
+    "approvedAmount": 0,
+    "criteriaMismatch": [
+        "Person age should be in between 30 to 60",
+        "Minimum income should be more than 200000",
+        "Low cibil score please try after 6 month"
+    ]
+}
