@@ -1,0 +1,57 @@
+GetAllArticlesById :
+
+NO DATA :
+
+Request:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:art="http://www.example.com/soapwebservice/articles">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <art:getArticlesByIdRequest>
+         <art:articleId>2</art:articleId>
+      </art:getArticlesByIdRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <SOAP-ENV:Fault>
+         <faultcode>SOAP-ENV:Server</faultcode>
+         <faultstring xml:lang="en">No value present</faultstring>
+      </SOAP-ENV:Fault>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+WITH DATA :
+
+Request:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:art="http://www.example.com/soapwebservice/articles">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <art:getArticlesByIdRequest>
+         <art:articleId>1</art:articleId>
+      </art:getArticlesByIdRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns2:getArticlesByIdResponse xmlns:ns2="http://www.example.com/soapwebservice/articles">
+         <ns2:artricleInfo>
+            <ns2:articleId>1</ns2:articleId>
+            <ns2:title>t11</ns2:title>
+            <ns2:category>c11</ns2:category>
+         </ns2:artricleInfo>
+      </ns2:getArticlesByIdResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

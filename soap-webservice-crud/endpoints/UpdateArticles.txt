@@ -1,0 +1,36 @@
+AddArticles :
+
+Request:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:art="http://www.example.com/soapwebservice/articles">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <art:updateArticlesRequest>
+         <art:articleInfo>
+            <art:articleId>1</art:articleId>
+            <art:title>t11</art:title>
+            <art:category>c11</art:category>
+         </art:articleInfo>
+      </art:updateArticlesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+Response :
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns2:updateArticlesResponse xmlns:ns2="http://www.example.com/soapwebservice/articles">
+         <ns2:serviceStatus>
+            <ns2:statusCode>SUCCESS</ns2:statusCode>
+            <ns2:message>Data Updated Successfully</ns2:message>
+         </ns2:serviceStatus>
+         <ns2:articleInfo>
+            <ns2:articleId>1</ns2:articleId>
+            <ns2:title>t11</ns2:title>
+            <ns2:category>c11</ns2:category>
+         </ns2:articleInfo>
+      </ns2:updateArticlesResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,206 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:sch="http://www.example.com/soapwebservice/articles"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://www.example.com/soapwebservice/articles"
+                  targetNamespace="http://www.example.com/soapwebservice/articles">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                    elementFormDefault="qualified"
+                    targetNamespace="http://www.example.com/soapwebservice/articles">
+            <!--  COMMON  -->
+            <xsd:complexType name="articlesInfo">
+                <xsd:sequence>
+                    <xsd:element name="articleId" type="xsd:long"/>
+                    <xsd:element name="title" type="xsd:string"/>
+                    <xsd:element name="category" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="serviceStatus">
+                <xsd:sequence>
+                    <xsd:element name="statusCode" type="xsd:string"/>
+                    <xsd:element name="message" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <!--  GET ID  -->
+            <xsd:element name="getArticlesByIdRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="articleId" type="xsd:long"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="getArticlesByIdResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="artricleInfo" type="tns:articlesInfo"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <!--  GET ALL  -->
+            <xsd:element name="getAllArticlesRequest">
+                <xsd:complexType/>
+            </xsd:element>
+            <xsd:element name="getAllArticlesResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element maxOccurs="unbounded" name="articleInfo" type="tns:articlesInfo"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <!--  Add  -->
+            <xsd:element name="addArticlesRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="title" type="xsd:string"/>
+                        <xsd:element name="category" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="addArticlesResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                        <xsd:element name="articleInfo" type="tns:articlesInfo"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <!--  Update  -->
+            <xsd:element name="updateArticlesRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="articleInfo" type="tns:articlesInfo"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="updateArticlesResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                        <xsd:element name="articleInfo" type="tns:articlesInfo"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <!--  delete  -->
+            <xsd:element name="deleteArticlesRequest">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="articleId" type="xsd:long"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="deleteArticlesResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                        <xsd:element name="articleInfo" type="tns:articlesInfo"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="getAllArticlesRequest">
+        <wsdl:part element="tns:getAllArticlesRequest" name="getAllArticlesRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getArticlesByIdRequest">
+        <wsdl:part element="tns:getArticlesByIdRequest" name="getArticlesByIdRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateArticlesResponse">
+        <wsdl:part element="tns:updateArticlesResponse" name="updateArticlesResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addArticlesResponse">
+        <wsdl:part element="tns:addArticlesResponse" name="addArticlesResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateArticlesRequest">
+        <wsdl:part element="tns:updateArticlesRequest" name="updateArticlesRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteArticlesRequest">
+        <wsdl:part element="tns:deleteArticlesRequest" name="deleteArticlesRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getArticlesByIdResponse">
+        <wsdl:part element="tns:getArticlesByIdResponse" name="getArticlesByIdResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addArticlesRequest">
+        <wsdl:part element="tns:addArticlesRequest" name="addArticlesRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getAllArticlesResponse">
+        <wsdl:part element="tns:getAllArticlesResponse" name="getAllArticlesResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteArticlesResponse">
+        <wsdl:part element="tns:deleteArticlesResponse" name="deleteArticlesResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="ArticleEndpoint">
+        <wsdl:operation name="getAllArticles">
+            <wsdl:input message="tns:getAllArticlesRequest" name="getAllArticlesRequest"> </wsdl:input>
+            <wsdl:output message="tns:getAllArticlesResponse" name="getAllArticlesResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getArticlesById">
+            <wsdl:input message="tns:getArticlesByIdRequest" name="getArticlesByIdRequest"> </wsdl:input>
+            <wsdl:output message="tns:getArticlesByIdResponse" name="getArticlesByIdResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateArticles">
+            <wsdl:input message="tns:updateArticlesRequest" name="updateArticlesRequest"> </wsdl:input>
+            <wsdl:output message="tns:updateArticlesResponse" name="updateArticlesResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addArticles">
+            <wsdl:input message="tns:addArticlesRequest" name="addArticlesRequest"> </wsdl:input>
+            <wsdl:output message="tns:addArticlesResponse" name="addArticlesResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteArticles">
+            <wsdl:input message="tns:deleteArticlesRequest" name="deleteArticlesRequest"> </wsdl:input>
+            <wsdl:output message="tns:deleteArticlesResponse" name="deleteArticlesResponse"> </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ArticleEndpointSoap11" type="tns:ArticleEndpoint">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getAllArticles">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getAllArticlesRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getAllArticlesResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getArticlesById">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getArticlesByIdRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getArticlesByIdResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateArticles">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="updateArticlesRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="updateArticlesResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addArticles">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="addArticlesRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="addArticlesResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteArticles">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="deleteArticlesRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deleteArticlesResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ArticleEndpointService">
+        <wsdl:port binding="tns:ArticleEndpointSoap11" name="ArticleEndpointSoap11">
+            <soap:address location="http://localhost:8086/ws"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

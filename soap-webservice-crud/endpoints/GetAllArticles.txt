@@ -1,0 +1,50 @@
+GetAllArticles :
+
+NO DATA :
+
+Request:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:art="http://www.example.com/soapwebservice/articles">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <art:getAllArticlesRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns2:getAllArticlesResponse xmlns:ns2="http://www.example.com/soapwebservice/articles"/>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+WITH DATA :
+
+Request:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:art="http://www.example.com/soapwebservice/articles">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <art:getAllArticlesRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+Response:
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns2:getAllArticlesResponse xmlns:ns2="http://www.example.com/soapwebservice/articles">
+         <ns2:articleInfo>
+            <ns2:articleId>1</ns2:articleId>
+            <ns2:title>t1</ns2:title>
+            <ns2:category>c1</ns2:category>
+         </ns2:articleInfo>
+      </ns2:getAllArticlesResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

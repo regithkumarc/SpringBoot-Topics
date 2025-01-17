@@ -1,0 +1,16 @@
+H2 Database Config :
+
+application.properties:
+---------------------------
+
+# H2
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+
+# Datasource
+spring.datasource.url=jdbc:h2:mem:soapwebserviceDB
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.show-sql=true
+#spring.jpa.hibernate.ddl-auto=update
