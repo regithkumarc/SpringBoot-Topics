@@ -1,0 +1,26 @@
+UpdateEmployees:
+
+Request:
+
+http://localhost:8087/updateEmployees
+
+{
+	"employeeId":2,
+	"name":"regith kumar",
+	"role":"developer"
+}
+
+
+Response :
+
+{
+	"serviceStatus": {
+		"statusCode": "SUCCESS",
+		"message": "Data Updated Successfully"
+	},
+	"employeeInfo": {
+		"employeeId": 2,
+		"name": "regith kumar",
+		"role": "developer"
+	}
+}

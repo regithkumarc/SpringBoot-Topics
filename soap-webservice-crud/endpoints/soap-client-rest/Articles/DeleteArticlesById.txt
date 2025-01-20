@@ -1,0 +1,41 @@
+DeleteArticlesById :
+
+NO DATA :
+
+Request:
+
+http://localhost:8087/deleteArticlesById/3
+
+Response:
+
+{
+	"serviceStatus": {
+		"statusCode": "NO DATA",
+		"message": "No Data Available"
+	},
+	"articleInfo": null
+}
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+WITH DATA :
+
+Request:
+
+http://localhost:8087/deleteArticlesById/3
+
+Response:
+
+
+{
+	"serviceStatus": {
+		"statusCode": "SUCCESS",
+		"message": "Data Deleted Successfully"
+	},
+	"articleInfo": {
+		"articleId": 3,
+		"title": "t3",
+		"category": "c3"
+	}
+}

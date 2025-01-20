@@ -1,2 +1,14 @@
 
+Articles :
+
 http://localhost:8086/ws/articles.wsdl
+
+
+Employees :
+
+http://localhost:8086/ws/employees.wsdl
+
+
+H2-Database :
+
+http://localhost:8086/h2-console/login.do?jsessionid=8e3f6b94749c0118e5ee8cff93f59ee1

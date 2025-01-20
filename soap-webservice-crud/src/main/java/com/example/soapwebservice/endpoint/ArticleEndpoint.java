@@ -89,12 +89,12 @@ public class ArticleEndpoint {
     public UpdateArticlesResponse updateArticlesRequest(@RequestPayload UpdateArticlesRequest request) {
         UpdateArticlesResponse response = new UpdateArticlesResponse();
         ServiceStatus serviceStatus = new ServiceStatus();
-        Articles articles = articleService.getArticleById(request.getArticleInfo().getArticleId());
+        Articles articles = articleService.getArticleById(request.getArticleId());
         if (articles != null) {
             Articles updateArticles = new Articles();
-            updateArticles.setArticleId(request.getArticleInfo().getArticleId());
-            updateArticles.setTitle(request.getArticleInfo().getTitle());
-            updateArticles.setCategory(request.getArticleInfo().getCategory());
+            updateArticles.setArticleId(request.getArticleId());
+            updateArticles.setTitle(request.getTitle());
+            updateArticles.setCategory(request.getCategory());
             articleService.updateArticle(updateArticles);
 
             ArticlesInfo articleInfo = new ArticlesInfo();

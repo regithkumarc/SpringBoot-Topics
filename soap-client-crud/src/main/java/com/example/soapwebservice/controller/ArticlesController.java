@@ -1,8 +1,7 @@
 package com.example.soapwebservice.controller;
 
-
 import com.example.soapwebservice.articles.*;
-import com.example.soapwebservice.service.SoapClient;
+import com.example.soapwebservice.service.SoapArticlesClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,35 +9,35 @@ import org.springframework.web.bind.annotation.*;
 public class ArticlesController {
 
     @Autowired
-    private SoapClient soapClient;
+    private SoapArticlesClient soapArticlesClient;
 
-    @GetMapping("/getNames")
-    public String getName() {
+    @GetMapping("/getNameArticlesController")
+    public String getNameArticlesController() {
         return "Getting the ArticlesController";
     }
 
     @GetMapping("/getArticlesById/{articleId}")
     public GetArticlesByIdResponse getArticlesById(@PathVariable Long articleId) {
-        return soapClient.getArticlesById(articleId);
+        return soapArticlesClient.getArticlesById(articleId);
     }
 
     @GetMapping("/getAllArticles")
     public GetAllArticlesResponse getAllArticles() {
-        return soapClient.getAllArticles();
+        return soapArticlesClient.getAllArticles();
     }
 
     @PostMapping("/addArticles")
     public AddArticlesResponse addArticles(@RequestBody AddArticlesRequest request) {
-        return soapClient.addArticles(request);
+        return soapArticlesClient.addArticles(request);
     }
 
     @PutMapping("/updateArticles")
     public UpdateArticlesResponse updateArticles(@RequestBody UpdateArticlesRequest request) {
-        return soapClient.updateArticles(request);
+        return soapArticlesClient.updateArticles(request);
     }
 
-    @DeleteMapping("/deleteArticles/{articleId}")
-    public DeleteArticlesResponse deleteArticles(@PathVariable Long articleId) {
-        return soapClient.deleteArticles(articleId);
+    @DeleteMapping("/deleteArticlesById/{articleId}")
+    public DeleteArticlesResponse deleteArticlesById(@PathVariable Long articleId) {
+        return soapArticlesClient.deleteArticlesById(articleId);
     }
 }

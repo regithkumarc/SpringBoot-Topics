@@ -1,0 +1,40 @@
+DeleteEmployeesById :
+
+NO DATA :
+
+Request:
+
+http://localhost:8087/deleteEmployeesById/3
+
+Response:
+
+{
+	"serviceStatus": {
+		"statusCode": "NO DATA",
+		"message": "No Data Available"
+	},
+	"employeeInfo": null
+}
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+WITH DATA :
+
+Request:
+
+http://localhost:8087/deleteEmployeesById/2
+
+Response:
+
+{
+	"serviceStatus": {
+		"statusCode": "SUCCESS",
+		"message": "Data Deleted Successfully"
+	},
+	"employeeInfo": {
+		"employeeId": 2,
+		"name": "regith kumar",
+		"role": "developer"
+	}
+}

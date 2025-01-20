@@ -1,0 +1,24 @@
+AddArticles :
+
+Request:
+
+http://localhost:8087/addArticles
+
+{
+	"title":"t11",
+	"category":"c11"
+}
+
+Response :
+
+{
+	"serviceStatus": {
+		"statusCode": "SUCCESS",
+		"message": "Data Added Successfully"
+	},
+	"articleInfo": {
+		"articleId": 4,
+		"title": "t11",
+		"category": "c11"
+	}
+}

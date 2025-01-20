@@ -1,0 +1,24 @@
+AddEmployees :
+
+Request:
+
+http://localhost:8087/addEmployees
+
+{
+	"name":"regith",
+	"role":"developer"
+}
+
+Response :
+
+{
+	"serviceStatus": {
+		"statusCode": "SUCCESS",
+		"message": "Data Added Successfully"
+	},
+	"employeeInfo": {
+		"employeeId": 2,
+		"name": "regith",
+		"role": "developer"
+	}
+}

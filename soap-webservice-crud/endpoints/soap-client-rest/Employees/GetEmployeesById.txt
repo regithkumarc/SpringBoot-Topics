@@ -1,0 +1,32 @@
+GetEmployeesById :
+
+NO DATA :
+
+Request:
+
+http://localhost:8087/getEmployeesById/2
+
+Response:
+
+{
+	"employeeInfo": null
+}
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+WITH DATA :
+
+Request:
+
+http://localhost:8087/getEmployeesById/6
+
+Response:
+
+{
+	"employeeInfo": {
+		"employeeId": 6,
+		"name": "regith",
+		"role": "developer"
+	}
+}

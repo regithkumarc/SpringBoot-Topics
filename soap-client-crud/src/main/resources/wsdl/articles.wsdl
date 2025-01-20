@@ -1,12 +1,6 @@
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-                  xmlns:sch="http://www.example.com/soapwebservice/articles"
-                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-                  xmlns:tns="http://www.example.com/soapwebservice/articles"
-                  targetNamespace="http://www.example.com/soapwebservice/articles">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.example.com/soapwebservice/articles" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.com/soapwebservice/articles" targetNamespace="http://www.example.com/soapwebservice/articles">
     <wsdl:types>
-        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                    elementFormDefault="qualified"
-                    targetNamespace="http://www.example.com/soapwebservice/articles">
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.example.com/soapwebservice/articles">
             <!--  COMMON  -->
             <xsd:complexType name="articlesInfo">
                 <xsd:sequence>
@@ -68,7 +62,9 @@
             <xsd:element name="updateArticlesRequest">
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="articleInfo" type="tns:articlesInfo"/>
+                        <xsd:element name="articleId" type="xsd:long"/>
+                        <xsd:element name="title" type="xsd:string"/>
+                        <xsd:element name="category" type="xsd:string"/>
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>

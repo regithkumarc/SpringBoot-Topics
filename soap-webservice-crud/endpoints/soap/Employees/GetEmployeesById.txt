@@ -1,4 +1,4 @@
-GetAllArticlesById :
+GetEmployeesById :
 
 NO DATA :
 

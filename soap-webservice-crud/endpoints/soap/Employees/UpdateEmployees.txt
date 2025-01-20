@@ -1,0 +1,36 @@
+UpdateEmployees:
+
+Request:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:emp="http://www.example.com/soapwebservice/employees">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <emp:updateEmployeesRequest>
+         <emp:employeeInfo>
+            <emp:employeeId>2</emp:employeeId>
+            <emp:name>ee</emp:name>
+            <emp:role>rr</emp:role>
+         </emp:employeeInfo>
+      </emp:updateEmployeesRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+Response :
+
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns2:updateEmployeesResponse xmlns:ns2="http://www.example.com/soapwebservice/employees">
+         <ns2:serviceStatus>
+            <ns2:statusCode>SUCCESS</ns2:statusCode>
+            <ns2:message>Data Updated Successfully</ns2:message>
+         </ns2:serviceStatus>
+         <ns2:employeeInfo>
+            <ns2:employeeId>2</ns2:employeeId>
+            <ns2:name>ee</ns2:name>
+            <ns2:role>rr</ns2:role>
+         </ns2:employeeInfo>
+      </ns2:updateEmployeesResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

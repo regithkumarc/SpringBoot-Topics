@@ -10,7 +10,7 @@ public class SoapConfig {
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setPackagesToScan("com.example.soapwebservice.articles");
+        marshaller.setPackagesToScan("com.example.soapwebservice.articles","com.example.soapwebservice.employees");
 
         return marshaller;
     }

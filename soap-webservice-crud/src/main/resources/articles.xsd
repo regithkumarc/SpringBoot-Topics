@@ -72,7 +72,9 @@
     <xsd:element name="updateArticlesRequest">
         <xsd:complexType>
             <xsd:sequence>
-                <xsd:element name="articleInfo" type="tns:articlesInfo"></xsd:element>
+                <xsd:element name="articleId" type="xsd:long"></xsd:element>
+                <xsd:element name="title" type="xsd:string"></xsd:element>
+                <xsd:element name="category" type="xsd:string"></xsd:element>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>

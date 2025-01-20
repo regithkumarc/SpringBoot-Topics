@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 @Service
-public class SoapClient {
+public class SoapArticlesClient {
 
     @Autowired
     private Jaxb2Marshaller jaxb2Marshaller;
@@ -35,7 +35,7 @@ public class SoapClient {
         return (UpdateArticlesResponse) getWebServiceTemplate().marshalSendAndReceive(URL, request);
     }
 
-    public DeleteArticlesResponse deleteArticles(Long articleId) {
+    public DeleteArticlesResponse deleteArticlesById(Long articleId) {
         DeleteArticlesRequest request = new DeleteArticlesRequest();
         request.setArticleId(articleId);
         return (DeleteArticlesResponse) getWebServiceTemplate().marshalSendAndReceive(URL, request);

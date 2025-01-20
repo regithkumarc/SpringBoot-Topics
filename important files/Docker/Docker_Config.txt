@@ -1,0 +1,231 @@
+Springboot :
+
+1) create the spring boot app with dependency - spring web,spring dev tools
+
+Docker Config :
+
+1) create the docker file
+2) add below code
+
+FROM openjdk:8
+
+EXPOSE 8085
+
+ADD target/docker-demo.jar docker-demo.jar
+
+ENTRYPOINT ["java","-jar","docker-demo.jar"]
+
+
+pom.xml :
+
+1) Add below code for create jar file  with this name
+
+<finalName>docker-demo</finalName>
+
+
+Run :
+
+runAs -> maven build -> mvn clean -> click run -> will create two jar files under target folder
+
+docker-demo.jar
+
+docker-demo.jar.original
+
+
+Docker Comments :-
+
+1) Download
+
+https://www.docker.com/products/docker-desktop/ 
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+2) Login
+
+docker login
+
+mailid : regithit@gmail.com
+username : regithcprm
+password : Regithcprm123@
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+3) Docker Build
+
+docker build -t docker-demo.jar .
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker build -t docker-demo.jar .
+[+] Building 93.9s (7/7) FINISHED                                                                                                                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                               1.0s
+ => => transferring dockerfile: 154B                                                                                                                               0.5s
+ => [internal] load metadata for docker.io/library/openjdk:8                                                                                                       2.3s
+ => [internal] load .dockerignore                                                                                                                                  0.3s
+ => => transferring context: 2B                                                                                                                                    0.0s
+ => [internal] load build context                                                                                                                                 15.5s
+ => => transferring context: 55.57MB                                                                                                                              15.1s
+ => [1/2] FROM docker.io/library/openjdk:8@sha256:86e863cc57215cfb181bd319736d0baf625fe8f150577f9eb58bd937f5452cb8                                                57.2s
+ => => resolve docker.io/library/openjdk:8@sha256:86e863cc57215cfb181bd319736d0baf625fe8f150577f9eb58bd937f5452cb8                                                 0.7s
+ => => sha256:8754a66e005039a091c5ad0319f055be393c7123717b1f6fee8647c338ff3ceb 105.92MB / 105.92MB                                                                36.5s
+ => => sha256:52a8c426d30b691c4f7e8c4b438901ddeb82ff80d4540d5bbd49986376d85cc9 210B / 210B                                                                         2.4s
+ => => sha256:d85151f15b6683b98f21c3827ac545188b1849efb14a1049710ebc4692de3dd5 5.42MB / 5.42MB                                                                     3.0s
+ => => sha256:9daef329d35093868ef75ac8b7c6eb407fa53abbcb3a264c218c2ec7bca716e6 54.58MB / 54.58MB                                                                  26.5s
+ => => sha256:2068746827ec1b043b571e4788693eab7e9b2a95301176512791f8c317a2816a 10.88MB / 10.88MB                                                                   9.0s
+ => => sha256:d9d4b9b6e964657da49910b495173d6c4f0d9bc47b3b44273cf82fd32723d165 5.16MB / 5.16MB                                                                     2.1s
+ => => sha256:001c52e26ad57e3b25b439ee0052f6692e5c0f2d5d982a00a8819ace5e521452 55.00MB / 55.00MB                                                                  23.9s
+ => => extracting sha256:001c52e26ad57e3b25b439ee0052f6692e5c0f2d5d982a00a8819ace5e521452                                                                          6.2s
+ => => extracting sha256:d9d4b9b6e964657da49910b495173d6c4f0d9bc47b3b44273cf82fd32723d165                                                                          1.0s
+ => => extracting sha256:2068746827ec1b043b571e4788693eab7e9b2a95301176512791f8c317a2816a                                                                          0.8s
+ => => extracting sha256:9daef329d35093868ef75ac8b7c6eb407fa53abbcb3a264c218c2ec7bca716e6                                                                          3.4s
+ => => extracting sha256:d85151f15b6683b98f21c3827ac545188b1849efb14a1049710ebc4692de3dd5                                                                          1.0s
+ => => extracting sha256:52a8c426d30b691c4f7e8c4b438901ddeb82ff80d4540d5bbd49986376d85cc9                                                                          0.9s
+ => => extracting sha256:8754a66e005039a091c5ad0319f055be393c7123717b1f6fee8647c338ff3ceb                                                                          5.0s
+ => [2/2] ADD target/docker-demo.jar docker-demo.jar                                                                                                               2.7s
+ => exporting to image                                                                                                                                            23.3s
+ => => exporting layers                                                                                                                                           17.6s
+ => => exporting manifest sha256:f8d3920e558a2ca9ebee1d26629a3bad92a1eaadddfcb8188992f78ac64b95c5                                                                  1.0s
+ => => exporting config sha256:b2c369e99945954dc38c42b1322434ace89e1c47431e8ddc6925daac3993e4a4                                                                    0.5s
+ => => exporting attestation manifest sha256:51471ed8dbe5f7d64e3b481e0c559b220ae9ed7b14bcbed140a6e33f35f06c1f                                                      0.9s
+ => => exporting manifest list sha256:aed6fc4f351b8afc8ee1afd065a2b1fc6c62809d907e71cf0e6ef31c9b112e10                                                             0.4s
+ => => naming to docker.io/library/docker-demo.jar:latest                                                                                                          0.1s
+ => => unpacking to docker.io/library/docker-demo.jar:latest                                                                                                       2.3s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/bpe7e7tt4d7tw4k2romo5f8wb
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+4) Image Status 
+
+docker images
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker images
+REPOSITORY        TAG       IMAGE ID       CREATED         SIZE
+docker-demo.jar   latest    aed6fc4f351b   3 minutes ago   909MB
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+5) Image Status 
+
+docker images
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker image ls
+REPOSITORY        TAG       IMAGE ID       CREATED         SIZE
+docker-demo.jar   latest    aed6fc4f351b   6 minutes ago   909MB
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+6) Run docker in locally
+
+docker run -p 8085:8085 docker-demo
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+7) Tag Image to docker image hub
+
+docker tag docker-demo.jar regithcprm/docker-demo.jar
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker tag docker-demo.jar regithcprm/docker-demo.jar
+
+After Create the tag :-
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker image ls
+REPOSITORY                   TAG       IMAGE ID       CREATED       SIZE
+docker-demo.jar              latest    aed6fc4f351b   2 hours ago   909MB
+regithcprm/docker-demo.jar   latest    aed6fc4f351b   2 hours ago   909MB
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+8) Push to Docker Hub
+
+docker push regithcprm/docker-demo.jar
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker push regithcprm/docker-demo.jar
+Using default tag: latest
+The push refers to repository [docker.io/regithcprm/docker-demo.jar]
+d85151f15b66: Pushed
+9daef329d350: Pushed
+001c52e26ad5: Pushed
+52a8c426d30b: Pushed
+8754a66e0050: Pushed
+a4a8c90e009f: Pushed
+8f842e436b26: Pushed
+2068746827ec: Pushed
+d9d4b9b6e964: Pushed
+latest: digest: sha256:aed6fc4f351b8afc8ee1afd065a2b1fc6c62809d907e71cf0e6ef31c9b112e10 size: 856
+
+After pushing pull :-
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker pull regithcprm/docker-demo.jar
+Using default tag: latest
+latest: Pulling from regithcprm/docker-demo.jar
+Digest: sha256:aed6fc4f351b8afc8ee1afd065a2b1fc6c62809d907e71cf0e6ef31c9b112e10
+Status: Image is up to date for regithcprm/docker-demo.jar:latest
+docker.io/regithcprm/docker-demo.jar:latest
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+9) Reomove tag using image name
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker image ls
+REPOSITORY                   TAG       IMAGE ID       CREATED       SIZE
+docker-demo.jar              latest    aed6fc4f351b   2 hours ago   909MB
+regithcprm/docker-demo.jar   latest    aed6fc4f351b   2 hours ago   909MB
+
+docker rmi docker-demo.jar
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker rmi docker-demo.jar
+Untagged: docker-demo.jar:latest
+
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker image ls
+REPOSITORY                   TAG       IMAGE ID       CREATED       SIZE
+regithcprm/docker-demo.jar   latest    aed6fc4f351b   2 hours ago   909MB
+
+
+Single :-
+
+E:\Regith\Apps\Apps\Springboot\springboot-docker-kubernate>docker rmi docker-demo
+
+Untagged: docker-demo:latest
+Deleted: sha256:1ced3d926d533f8b0ad89d2e63c03a4c194003c7790f5a672dde3269e3b17337
+
+Multiple :-
+
+E:\Regith\Apps\Apps\Springboot\springboot-docker-kubernate>docker rmi docker-demo regithcprm/docker-demo
+Untagged: docker-demo:latest
+Untagged: regithcprm/docker-demo:latest
+Untagged: regithcprm/docker-demo@sha256:8dc7d2bff2e1ffc30d1ec9cefc2dc182b2f3d615d843057cd8c5f155bc37a3dd
+Deleted: sha256:1ced3d926d533f8b0ad89d2e63c03a4c194003c7790f5a672dde3269e3b17337
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+10) Remove tag force
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker image ls
+REPOSITORY                   TAG       IMAGE ID       CREATED       SIZE
+docker-demo.jar              latest    aed6fc4f351b   2 hours ago   909MB
+regithcprm/docker-demo.jar   latest    aed6fc4f351b   2 hours ago   909MB
+
+docker rmi -f regithcprm/docker-demo.jar
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker rmi -f regithcprm/docker-demo.jar
+Untagged: regithcprm/docker-demo.jar:latest
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker image ls
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+<none>       <none>    aed6fc4f351b   2 hours ago   909MB
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+11) Pull
+
+docker pull regithcprm/docker-demo.jar
+
+E:\Apps\SpringBoot-Topics\SpringBoot-Topics\docker-demo>docker pull regithcprm/docker-demo.jar
+Using default tag: latest
+latest: Pulling from regithcprm/docker-demo.jar
+Digest: sha256:aed6fc4f351b8afc8ee1afd065a2b1fc6c62809d907e71cf0e6ef31c9b112e10
+Status: Image is up to date for regithcprm/docker-demo.jar:latest
+docker.io/regithcprm/docker-demo.jar:latest

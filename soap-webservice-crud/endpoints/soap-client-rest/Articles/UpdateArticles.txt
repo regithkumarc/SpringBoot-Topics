@@ -1,0 +1,20 @@
+UpdateArticles :
+
+Request:
+
+http://localhost:8087/updateArticles
+
+
+Response :
+
+{
+	"serviceStatus": {
+		"statusCode": "SUCCESS",
+		"message": "Data Updated Successfully"
+	},
+	"articleInfo": {
+		"articleId": 3,
+		"title": "t3",
+		"category": "c3"
+	}
+}

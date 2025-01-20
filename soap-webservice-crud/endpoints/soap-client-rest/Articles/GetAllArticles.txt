@@ -1,0 +1,39 @@
+GetAllArticles :
+
+NO DATA :
+
+Request:
+
+http://localhost:8087/getAllArticles
+
+Response:
+
+{
+	"articleInfo": []
+}
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+WITH DATA :
+
+Request:
+
+http://localhost:8087/getAllArticles
+
+Response:
+
+{
+	"articleInfo": [
+		{
+			"articleId": 4,
+			"title": "t11",
+			"category": "c11"
+		},
+		{
+			"articleId": 5,
+			"title": "t11",
+			"category": "c11"
+		}
+	]
+}
