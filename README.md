@@ -36,10 +36,6 @@ https://www.docker.com/products/docker-desktop/
 
 docker login
 
-mailid : regithit@gmail.com
-username : regithcprm
-password : Regithcprm123@
-
 3) Docker Build
 
 docker build -t docker-demo .
@@ -228,12 +224,5 @@ E:\Software\kafka>.\bin\windows\kafka-console-producer.bat --bootstrap-server lo
 Consume Message:
 
 E:\Software\kafka>.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my-topic1 --from-beginning
-
------------------------------------------------------------------------------------------------------------------
-
-
------------------------------------------------------------------------------------------------------------------
-
-
 
 -----------------------------------------------------------------------------------------------------------------

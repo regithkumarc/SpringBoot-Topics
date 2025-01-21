@@ -1,0 +1,33 @@
+package com.example.droolsdemo;
+import com.example.droolsdemo.entity.Employee;
+import com.example.droolsdemo.entity.Access;
+
+rule "Developer"
+when
+    employeeObject : Employee(role=="Developer");
+then
+    Access access = new Access();
+    access.setRead("true");
+    access.setWrite("false");
+    employeeObject.setAccess(access);
+end;
+
+rule "Lead"
+when
+    employeeObject : Employee(role=="Lead");
+then
+    Access access = new Access();
+    access.setRead("true");
+    access.setWrite("true");
+    employeeObject.setAccess(access);
+end;
+
+rule "Manager"
+when
+    employeeObject : Employee(role=="Manager");
+then
+    Access access = new Access();
+    access.setRead("true");
+    access.setWrite("true");
+    employeeObject.setAccess(access);
+end;

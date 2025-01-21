@@ -1,0 +1,25 @@
+package com.example.droolsdemo;
+import com.example.droolsdemo.entity.Order;
+
+rule "HDFC"
+when
+    orderObject : Order(cardType=="HDFC" && price>1000);
+then
+    orderObject.setDiscount(10);
+end;
+
+
+rule "ICICI"
+when
+    orderObject : Order(cardType=="ICICI" && price>1500);
+then
+    orderObject.setDiscount(8);
+end;
+
+
+rule "DBS"
+when
+    orderObject : Order(cardType=="DBS" && price>2000);
+then
+    orderObject.setDiscount(5);
+end;
