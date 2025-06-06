@@ -1,4 +1,8 @@
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.example.com/soapwebservice/articles" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.com/soapwebservice/articles" targetNamespace="http://www.example.com/soapwebservice/articles">
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:sch="http://www.example.com/soapwebservice/articles"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://www.example.com/soapwebservice/articles"
+                  targetNamespace="http://www.example.com/soapwebservice/articles">
     <wsdl:types>
         <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.example.com/soapwebservice/articles">
             <!--  COMMON  -->

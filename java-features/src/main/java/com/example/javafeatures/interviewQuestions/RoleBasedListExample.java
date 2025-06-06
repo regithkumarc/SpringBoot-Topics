@@ -21,5 +21,9 @@ public class RoleBasedListExample {
 
         Map<String,Long> counted = employeeList.stream().collect(Collectors.groupingBy(Employee::getRole,Collectors.counting()));
         System.out.println(counted);
+
+        employeeList.stream()
+                .collect(Collectors.groupingBy(Employee::getRole,Collectors.counting()))
+                .forEach((role, count) -> System.out.println(role + ":" + count));
     }
 }

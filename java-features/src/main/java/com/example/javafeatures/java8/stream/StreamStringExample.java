@@ -20,7 +20,7 @@ public class StreamStringExample {
         System.out.println("Any Match S : " + anyMatchS);
 
         //AllMatch
-        List<String> allMatchList = Arrays.asList("subih","suresh");
+        List<String> allMatchList = Arrays.asList("subih","suresh","jan");
         boolean allMatchStartWithSEndWithH = allMatchList.stream().allMatch(i -> i.startsWith("s") && i.endsWith("h"));
         System.out.println("All Match Suresh : " + allMatchStartWithSEndWithH);
 
@@ -51,5 +51,7 @@ public class StreamStringExample {
         List<Employee> leadEmployeeAgeSorting = employeeList.stream().filter(i -> i.getRole().equalsIgnoreCase("lead"))
                 .sorted(Comparator.comparing(Employee::getAge)).collect(Collectors.toList());
         System.out.println("Lead Employee Age Sort List : " + leadEmployeeAgeSorting);
+
+        employeeList.stream().collect(Collectors.groupingBy(Employee::getRole,Collectors.counting())).forEach((role, count) -> System.out.println(role + " : " + count));
     }
 }
