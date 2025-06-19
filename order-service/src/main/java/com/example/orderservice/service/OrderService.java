@@ -7,7 +7,13 @@ import com.example.orderservice.model.Payment;
 import com.example.orderservice.model.TransactionRequest;
 import com.example.orderservice.model.TransactionResponse;
 import com.example.orderservice.repository.OrderRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,12 +22,18 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@RefreshScope
+@Slf4j
 public class OrderService implements OrderServiceImpl {
+
+/*    @Value("${microservices.payment-service.endpoints.endpoint.uri}")
+    private String paymentServiceBaseURL;*/
 
     @Autowired
     private OrderRepository orderRepository;
 
     @Autowired
+    @Lazy
     private RestTemplate restTemplate;
 
     @Override
@@ -40,7 +52,7 @@ public class OrderService implements OrderServiceImpl {
     }
 
     @Override
-    public TransactionResponse createOrder(TransactionRequest transactionRequest) {
+    public TransactionResponse createOrder(TransactionRequest transactionRequest) throws JsonProcessingException {
 
         Order order = transactionRequest.getOrder();
         order.setId(UUID.randomUUID().variant());
@@ -48,8 +60,12 @@ public class OrderService implements OrderServiceImpl {
         payment.setOrderId(order.getId());
         payment.setAmount(order.getPrice());
 
+        log.info("Order Service Request : {} ",new ObjectMapper().writeValueAsString(transactionRequest));
+
         Payment paymentResponse = restTemplate.postForObject(URL.PAYMENT_BASE_URL + "/createPayment",payment, Payment.class);
         String response = paymentResponse.getStatus().equals("success") ? "Payment processing successful and order placed" : "Failure in payment API and order added to cart";
+
+        log.info("Order Service with Payment Response : {} ",new ObjectMapper().writeValueAsString(paymentResponse));
         orderRepository.save(order);
 
         TransactionResponse transactionResponse = new TransactionResponse();

@@ -11,23 +11,48 @@ spring:
               predicates:
                 - Path=/order/**
                 - Method=GET,POST,PUT,DELETE
+#              filters:
+#                - name: CircuitBreaker
+#                  args:
+#                    name: order-service
+#                    fallbackUri: forward:/fallback/order
             - id: payment-service
               uri: lb://PAYMENT-SERVICE
               predicates:
                 - Path=/payment/**
                 - Method=GET,POST,PUT,DELETE
+#              filters:
+#                - name: CircuitBreaker
+#                  args:
+#                    name: payment-service
+#                    fallbackUri: forward:/fallback/payment
 
   main:
     web-application-type: reactive
 
+resilience4j:
+  circuitbreaker:
+    instances:
+      userServiceCircuitBreaker:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 2s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+        recordExceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - java.io.IOException
+        ignoreExceptions:
+          - java.lang.IllegalStateException
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,circuitbreakers
+
 server:
   port: 8083
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-    fetch-registry: true
-    register-with-eureka: true
-  instance:
-    hostname: localhost
+

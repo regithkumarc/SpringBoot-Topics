@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: CLOUD-GATEWAY
+  cloud:
+    gateway:
+      server:
+        routes:
+          - id: order-service
+            uri: lb://ORDER-SERVICE
+            predicates:
+              - Path=/order/**
+              - Method=GET,POST,PUT,DELETE
+            filters:
+              - name: CircuitBreaker
+                args:
+                  name: order-service
+                  fallbackUri: forward:/fallback/order
+          - id: payment-service
+            uri: lb://PAYMENT-SERVICE
+            predicates:
+              - Path=/payment/**
+              - Method=GET,POST,PUT,DELETE
+            filters:
+              - name: CircuitBreaker
+                args:
+                  name: payment-service
+                  fallbackUri: forward:/fallback/payment
+
+  main:
+    web-application-type: reactive
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      userService:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+
+
+  retry:
+    instances:
+      userService:
+        maxRetryAttempts: 5
+        waitDuration: 10s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+server:
+  port: 8083

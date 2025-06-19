@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: ORDER-SERVICE
+
+  datasource:
+    driverClassName: org.h2.Driver
+    password: ''
+    username: sa
+    url: jdbc:h2:mem:orderServiceDB
+
+  h2:
+    console:
+      path: /h2-console
+      enabled: 'true'
+
+  jpa:
+    show-sql: 'true'
+
+server:
+  port: '8081'
+
+logging:
+  file:
+    name: E:/Regith/Apps/logs/gateway.log
