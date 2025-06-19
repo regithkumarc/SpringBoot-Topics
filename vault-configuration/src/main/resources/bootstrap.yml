@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: vault-configuration
+  cloud:
+   config:
+     uri:
+       - http://localhost:8084
+   vault:
+     scheme: http
+     kv:
+       enabled: true
+     token: 00000000-0000-0000-0000-000000000000
