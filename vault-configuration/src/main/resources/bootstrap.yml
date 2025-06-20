@@ -3,10 +3,15 @@ spring:
     name: vault-configuration
   cloud:
    config:
-     uri:
-       - http://localhost:8084
+     enabled: true
+     backend: secret
+     uri: http://localhost:8084
    vault:
-     scheme: http
+     uri: http://localhost:8200/
+     host: development
+     port: 8200
+     scheme: https
      kv:
        enabled: true
+       application-name: vault-configuration
      token: 00000000-0000-0000-0000-000000000000

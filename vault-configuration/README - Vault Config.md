@@ -127,3 +127,81 @@ Key                     Value
 ---                     -----
 credentials.password    admin
 credentials.userName    Admin
+
+-------------------------------------------------------------------------------------
+
+pom.xml
+
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-vault-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+		</dependency>
+
+-------------------------------------------------------------------------------------
+
+@Data
+@ConfigurationProperties("credentials")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+public class Credentials {
+
+    private String userName;
+    private String password;
+}
+
+
+-------------------------------------------------------------------------------------
+
+
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableConfigurationProperties(Credentials.class)
+@Slf4j
+public class VaultConfigurationApplication implements CommandLineRunner {
+
+	private final Credentials credentials;
+
+	public VaultConfigurationApplication(Credentials credentials) {
+		this.credentials = credentials;
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(VaultConfigurationApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		log.info("UserName : {} " ,credentials.getUserName());
+		log.info("Password : {} " ,credentials.getPassword());
+	}
+}
+
+-------------------------------------------------------------------------------------
+
+bootsrap.yml
+
+spring:
+  application:
+    name: vault-configuration
+  cloud:
+   config:
+     enabled: true
+     backend: secret
+     uri: http://localhost:8084
+   vault:
+     uri: http://localhost:8200/
+     host: development
+     port: 8200
+     scheme: https
+     kv:
+       enabled: true
+       application-name: vault-configuration
+     token: 00000000-0000-0000-0000-000000000000
